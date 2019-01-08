@@ -1,0 +1,19 @@
+@import "../styles";
+
+::ng-deep .mat-tab-label {
+    background: $primary;
+}
+
+// problem: active label supposed to grow up instead of pushing down the container
+::ng-deep .mat-tab-label-active {
+    height: 60px !important;
+    background: $primary;
+   }
+
+.tabs-container {
+    width: 90%;
+}
+
+.fill-remaining-space {
+    flex: 1 1 auto;
+}

@@ -1,1 +1,12 @@
-<app-tabs></app-tabs>
+<mat-toolbar color="primary">
+    <h1>To-do App</h1>
+    <span class="fill-remaining-space"></span>
+    <app-counter [amountChecked]="amountChecked" [listLength]="listLength" [isTodo]="isTodo"></app-counter>
+</mat-toolbar>
+<div>
+    <button>Done Selected</button>
+    <button>Delete Selected</button>
+</div>
+<mat-card class="tabs-container">
+    <app-tabs></app-tabs>
+</mat-card>

@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'todo';
+  // anySelected means any
+  amountChecked = 7;
+  isTodo = true;
+  listLength = 5;
 }
