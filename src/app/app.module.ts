@@ -7,6 +7,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CounterComponent } from './components/counter/counter.component';
 import { CheckBoxSelectionComponent } from './components/check-box-selection/check-box-selection.component';
 
@@ -22,7 +23,8 @@ import { CheckBoxSelectionComponent } from './components/check-box-selection/che
     MatTabsModule,
     MatCardModule,
     BrowserAnimationsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    NgxDatatableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

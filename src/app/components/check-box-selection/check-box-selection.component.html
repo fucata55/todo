@@ -1,3 +1,38 @@
-<p>
-  check-box-selection works!
-</p>
+<div>
+    <div style='float:left;width:100%'>
+      <ngx-datatable
+        class="material"
+        [rows]="data"
+        [columnMode]="'force'"
+        [headerHeight]="50"
+        [footerHeight]=""
+        [rowHeight]="'auto'"
+        [selected]="selected"
+        [selectionType]="'checkbox'"
+        [selectAllRowsOnPage]="false"
+        [displayCheck]="displayCheck"
+        (activate)="onActivate($event)"
+        (select)='onSelect($event)'>
+        <ngx-datatable-column
+          [width]="30"
+          [sortable]="false"
+          [canAutoResize]="false"
+          [draggable]="false"
+          [resizeable]="false"
+          [headerCheckboxable]="true"
+          [checkboxable]="true">
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Task"></ngx-datatable-column>
+        <ngx-datatable-column name="Description"></ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+    <!-- <div class='selected-column'>
+      <h4>Selections <small>({{selected?.length}})</small></h4>
+      <ul>
+        <li *ngFor='let sel of selected'>
+          {{sel.name}}
+        </li>
+        <li *ngIf="!selected?.length">No Selections</li>
+      </ul>
+    </div> -->
+  </div>
