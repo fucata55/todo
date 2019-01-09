@@ -8,12 +8,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CounterComponent } from './components/counter/counter.component';
+import { CheckBoxSelectionComponent } from './components/check-box-selection/check-box-selection.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TabsComponent,
-    CounterComponent
+    CounterComponent,
+    CheckBoxSelectionComponent
   ],
   imports: [
     BrowserModule,
