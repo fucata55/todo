@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabsComponent implements OnInit {
 
+  tabList: string[];
+
   constructor() { }
 
   ngOnInit() {
+    this.tabList = ['To-do', 'Done'];
   }
 
+  switchTab(tab) {
+    console.log(tab);
+  }
 }
