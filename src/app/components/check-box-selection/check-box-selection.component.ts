@@ -1,17 +1,23 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-check-box-selection',
   templateUrl: './check-box-selection.component.html',
   styleUrls: ['./check-box-selection.component.scss']
 })
-export class CheckBoxSelectionComponent {
+export class CheckBoxSelectionComponent implements OnInit {
 
   @Input()
-  data: object[];
-
+  tableDetails: object[];
   selected = [];
 
+  @Output()
+  change = new EventEmitter();
+
+  ngOnInit() {
+
+  }
+  
   onSelect({ selected }) {
     console.log('Select Event', selected, this.selected);
 
@@ -20,12 +26,11 @@ export class CheckBoxSelectionComponent {
   }
 
   onActivate(event) {
-    console.log('Activate Event', event);
+    // console.log('Activate Event', event);
   }
 
-
-  displayCheck(row) {
-    return row.name !== 'Ethel Price';
+  doneRedo(row: object) {
+    this.change.emit(row);
+    this.tableDetails['list'] = [...this.tableDetails['list']];
   }
-
 }
