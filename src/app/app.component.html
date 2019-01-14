@@ -4,8 +4,8 @@
     <app-counter [amountChecked]="amountChecked" [listLength]="listLength" [isTodo]="isTodo"></app-counter>
 </mat-toolbar>
 <div>
-    <button>Done Selected</button>
-    <button>Delete Selected</button>
+    <button (click)="applyActionOnCheckedItems(done)">Done Selected</button>
+    <button (click)="applyActionOnCheckedItems()">Delete Selected</button>
 </div>
 <mat-card class="tabs-container">
     <app-tabs (tableSummary)="applyTableSummary($event)" (checked)="applyCheck($event)"></app-tabs>

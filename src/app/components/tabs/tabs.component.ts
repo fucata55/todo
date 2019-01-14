@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { CheckBoxSelectionComponent } from './../check-box-selection/check-box-selection.component';
+import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-tabs',
@@ -15,6 +16,9 @@ export class TabsComponent implements OnInit {
   // emmit cheked
   @Output()
   tableSummary = new EventEmitter();
+
+  @ViewChild(CheckBoxSelectionComponent)
+  checkBoxSelectionComponent: CheckBoxSelectionComponent;
 
   ngOnInit() {
     this.tabList = [
@@ -96,6 +100,10 @@ export class TabsComponent implements OnInit {
         tab['list'].push(row);
       }
     }
+  }
+
+  addRow(row) {
+    this.tabList[0]['list'].push(row);
   }
 
   private shareTableSummary(e) {
