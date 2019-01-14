@@ -10,7 +10,7 @@
         [selectionType]="tableDetails.selectionType"
         [selectAllRowsOnPage]="false"
         (activate)="onActivate($event)"
-        (select)='onSelect($event)'>
+        (select)='onSelect($event, tableDetails)'>
         <ngx-datatable-column
           [width]="30"
           [sortable]="false"

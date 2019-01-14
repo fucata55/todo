@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-tabs',
@@ -8,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class TabsComponent implements OnInit {
 
   tabList: object[];
-  toDoList: object[];
-  doneList: object[];
 
-  constructor() { }
+  @Output()
+  checked = new EventEmitter();
+
+  // emmit cheked
+  @Output()
+  tableSummary = new EventEmitter();
 
   ngOnInit() {
     this.tabList = [
@@ -52,26 +55,39 @@ export class TabsComponent implements OnInit {
         ]
       }
     ];
+
+    this.tableSummary.emit({
+      textLabel: 'To-do',
+      contentAmount: this.tabList[0]['list'].length,
+      amountChecked: 0
+    });
   }
 
-  switchTab(tab) {
-    console.log(tab);
+  check(checkedItems) {
+    this.checked.emit(checkedItems);
+  }
+
+  switchTab(tabChangeEvent) {
+    tabChangeEvent.tab.amountChecked = 0;
+    this.shareTableSummary(tabChangeEvent);
   }
 
   doneRedo(row) {
     let isRemoved = false;
     for (const tab of this.tabList) {
-
       if (isRemoved === true) {
         tab['list'].push(row);
         continue;
       }
 
       for (const item of tab['list']) {
-
         if (item.uniqueId === row.uniqueId) {
           tab['list'].splice(tab['list'].indexOf(item), 1);
           isRemoved = true;
+          tab['amountChecked'] = 0;
+          tab['contentAmount'] = tab['list'].length;
+          tab['textLabel'] = tab['name'];
+          this.tableSummary.emit(tab);
           break;
         }
       }
@@ -80,6 +96,14 @@ export class TabsComponent implements OnInit {
         tab['list'].push(row);
       }
     }
-    // console.log(this.tabList);
+  }
+
+  private shareTableSummary(e) {
+    for (const tab of this.tabList) {
+      if (tab['name'] === e.tab.textLabel) {
+          e.tab.contentAmount = tab['list'].length;
+      }
+    }
+    this.tableSummary.emit(e.tab);
   }
 }

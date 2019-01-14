@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +7,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'todo';
-  // anySelected means any
-  amountChecked = 7;
-  isTodo = true;
-  listLength = 5;
+  amountChecked = 0;
+  isTodo: boolean;
+  listLength: number;
+
+
+  applyTableSummary(tabSummary) {
+    this.amountChecked = tabSummary.amountChecked;
+    this.listLength = tabSummary.contentAmount;
+    this.isTodo = tabSummary.textLabel === 'To-do' ? true : false;
+  }
+
+  applyCheck(checkedList) {
+    this.amountChecked = checkedList.length;
+  }
 }

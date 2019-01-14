@@ -8,5 +8,5 @@
     <button>Delete Selected</button>
 </div>
 <mat-card class="tabs-container">
-    <app-tabs></app-tabs>
+    <app-tabs (tableSummary)="applyTableSummary($event)" (checked)="applyCheck($event)"></app-tabs>
 </mat-card>

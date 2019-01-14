@@ -1,4 +1,4 @@
-import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-check-box-selection',
@@ -15,11 +15,17 @@ export class CheckBoxSelectionComponent {
   @Output()
   changed = new EventEmitter();
 
-  onSelect({ selected }) {
-    console.log('Select Event', selected, this.selected);
+  @Output()
+  checked = new EventEmitter();
 
-    this.selected.splice(0, this.selected.length);
-    this.selected.push(...selected);
+  onSelect({ selected }, tableDetails) {
+    if (tableDetails.selectionType === 'checkbox') {
+      this.selected.splice(0, this.selected.length);
+      this.selected.push(...selected);
+      this.checked.emit(selected);
+    } else {
+      console.log('selected');
+    }
   }
 
   onActivate(event) {
@@ -27,6 +33,7 @@ export class CheckBoxSelectionComponent {
   }
 
   doneRedo(row: object) {
+    event.stopPropagation();
     this.changed.emit(row);
     this.tableDetails['list'] = [...this.tableDetails['list']];
     this.selected = [];

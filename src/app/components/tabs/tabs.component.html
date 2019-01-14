@@ -1,7 +1,7 @@
 <mat-tab-group dynamicHeight=true (selectedTabChange)="switchTab($event)">
   <mat-tab *ngFor="let tab of tabList" label="{{ tab.name }}">
     <ng-template matTabContent>
-      <app-check-box-selection [tableDetails]='tab' (changed)="doneRedo($event)"></app-check-box-selection>
+      <app-check-box-selection [tableDetails]='tab' (changed)="doneRedo($event)" (checked)=check($event)></app-check-box-selection>
     </ng-template>
   </mat-tab>
 </mat-tab-group>
