@@ -9,7 +9,7 @@
         [selected]="selected"
         [selectionType]="tableDetails.selectionType"
         [selectAllRowsOnPage]="false"
-        (activate)="onActivate($event)"
+        (activate)="openDialog($event, tableDetails)"
         (select)='onSelect($event, tableDetails)'>
         <ngx-datatable-column
           [width]="30"

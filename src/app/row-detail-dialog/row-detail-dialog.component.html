@@ -1,0 +1,8 @@
+<div class="mdc-dialog__backdrop">
+  <h1 mat-dialog-title>{{ data.row.task }}</h1>
+  <mat-dialog-content>
+    <p>{{ data.row.description }}</p>
+  </mat-dialog-content>
+  <button mat-raised-button mat-dialog-close>Close</button>
+  <button mat-raised-button [mat-dialog-close]="data.row">{{ data.actionName }}</button>
+</div>

@@ -7,16 +7,22 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CounterComponent } from './components/counter/counter.component';
 import { CheckBoxSelectionComponent } from './components/check-box-selection/check-box-selection.component';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { RowDetailDialogComponent } from './row-detail-dialog/row-detail-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
     TabsComponent,
     CounterComponent,
-    CheckBoxSelectionComponent
+    CheckBoxSelectionComponent,
+    RowDetailDialogComponent
+  ],
+  entryComponents: [
+    RowDetailDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +30,9 @@ import { CheckBoxSelectionComponent } from './components/check-box-selection/che
     MatCardModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

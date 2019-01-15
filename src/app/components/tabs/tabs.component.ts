@@ -77,6 +77,7 @@ export class TabsComponent implements OnInit {
   }
 
   doneRedo(row) {
+    event.stopPropagation();
     let isRemoved = false;
     for (const tab of this.tabList) {
       if (isRemoved === true) {
@@ -85,7 +86,9 @@ export class TabsComponent implements OnInit {
       }
 
       for (const item of tab['list']) {
-        if (item.uniqueId === row.uniqueId) {
+        if (!row) {
+          break;
+        } else if (item.uniqueId === row.uniqueId) {
           tab['list'].splice(tab['list'].indexOf(item), 1);
           isRemoved = true;
           tab['amountChecked'] = 0;
