@@ -36,6 +36,7 @@ export class TabsComponent implements OnInit {
           { uniqueId: '4', task: 'Molly2', description: ' todo description description description' },
           { uniqueId: '5', task: 'Molly3', description: ' todo description description description' },
           { uniqueId: '6', task: 'Molly4', description: ' todo description description description' },
+          { uniqueId: 'toAddNew', task: 'Add new task.', description: 'Describe task' }
         ]
       },
       {

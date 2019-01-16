@@ -20,14 +20,47 @@
           [headerCheckboxable]="tableDetails.hasCheckBox"
           [checkboxable]="tableDetails.hasCheckBox">
         </ngx-datatable-column>
-        <ngx-datatable-column name="Task"></ngx-datatable-column>
-        <ngx-datatable-column name="Description"></ngx-datatable-column>
+        <ngx-datatable-column name="Task">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                <span
+                  title="Double click to insert new task"
+                  (click)="toggleEditable(row.uniqueId)"
+                  *ngIf="row.uniqueId !== 'toAddNew' || (row.uniqueId === 'toAddNew' && editable === false)">
+                  {{value}}
+                </span>
+                <input
+                  autofocus
+                  (blur)="toggleEditable(row.uniqueId)"
+                  *ngIf="row.uniqueId === 'toAddNew' && editable === true"
+                  type="text"
+                  [value]="value"
+                />
+              </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Description">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                <span
+                  title="Double click to edit"
+                  (click)="toggleEditable(row.uniqueId)"
+                  *ngIf="row.uniqueId !== 'toAddNew' || (row.uniqueId === 'toAddNew' && editable === false)">
+                  {{value}}
+                </span>
+                <input
+                  autofocus
+                  (blur)="toggleEditable(row.uniqueId)"
+                  *ngIf="row.uniqueId === 'toAddNew' && editable === true"
+                  type="text"
+                  [value]="value"
+                />
+              </ng-template>
+        </ngx-datatable-column>
         <ngx-datatable-column name="id">
           <ng-template ngx-datatable-header-template>
             Action
           </ng-template>
           <ng-template ngx-datatable-cell-template let-row="row">
-            <button color="accent" (click)="doneRedo(row)">{{ tableDetails.action.name }}</button>
+            <button *ngIf="row.uniqueId !== 'toAddNew'" color="accent" (click)="doneRedo(row)">{{ tableDetails.action.name }}</button>
+            <button *ngIf="row.uniqueId === 'toAddNew'" color="accent" (click)="createTask(row)">Create</button>
           </ng-template>
         </ngx-datatable-column>
       </ngx-datatable>

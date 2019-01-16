@@ -1,6 +1,7 @@
 import { RowDetailDialogComponent } from './../../row-detail-dialog/row-detail-dialog.component';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { createRootComponentView } from '@angular/core/src/render3/component';
 
 @Component({
   selector: 'app-check-box-selection',
@@ -14,12 +15,24 @@ export class CheckBoxSelectionComponent {
   tableDetails: object[];
 
   selected = [];
+  editing = {};
+  editable = false;
 
   @Output()
   changed = new EventEmitter();
 
   @Output()
   checked = new EventEmitter();
+
+  toggleEditable(rowUniqueId) {
+    event.stopPropagation();
+    this.editable = !this.editable;
+  }
+
+  createTask(row) {
+    event.stopPropagation();
+    console.log(row);
+  }
 
   onSelect({ selected }, tableDetails) {
     event.stopPropagation();
